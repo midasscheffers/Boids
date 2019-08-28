@@ -10,6 +10,7 @@ class Boid {
     this.seeRange = 200;
     this.seeAngle = 250;
     this.color = [50, 150, 150];
+    this.selected = false;
   }
 
   blit(){
@@ -19,10 +20,13 @@ class Boid {
       fill(this.color);
       noStroke();
       triangle(0, 0, -15, 5, -15, -5);
-      fill(255, 50);
-      arc(0, 0, this.seeRange, this.seeRange, radians(-this.seeAngle/2), radians(this.seeAngle/2), PIE);
-      stroke(255);
-      line(0, 0, 20, 0)
+      if (this.selected){
+        noStroke();
+        fill(255, 50);
+        arc(0, 0, this.seeRange, this.seeRange, radians(-this.seeAngle/2), radians(this.seeAngle/2), PIE);
+        stroke(255);
+        line(0, 0, 20, 0);
+      }
     pop();
   }
 
